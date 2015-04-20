@@ -5,3 +5,18 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+require 'json'
+
+file = File.read('db/champions.json')
+data_hash = JSON.parse(file)
+
+data_hash["data"].each do |character, attribute|
+  Character.create(:name => attribute["name"],
+                   :title => attribute["title"],
+                   :blurb => attribute["blurb"]
+                  )
+end
+
+
+
