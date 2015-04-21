@@ -13,7 +13,7 @@ data_hash["data"].each do |character, attribute|
                   )
 end
 
-players = ["C9Hai", "C9Meteos", "C9Balls", "C9Sneaky", "C9Lemonation"]
+players = ["C9Hai", "C9Meteos", "C9Balls", "C9Sneaky", "C9LemonNation"]
 player_image = ["http://hydra-media.cursecdn.com/lol.gamepedia.com/3/3d/HAI.C9_lolesports.PP_0.jpg",
                 "http://hydra-media.cursecdn.com/lol.gamepedia.com/1/10/METEOS.C9_lolesports.PP_0.jpg",
                 "http://hydra-media.cursecdn.com/lol.gamepedia.com/b/bc/BALLS.C9_lolesports.PP_0.jpg",
@@ -22,9 +22,12 @@ player_image = ["http://hydra-media.cursecdn.com/lol.gamepedia.com/3/3d/HAI.C9_l
                 ]
 
 players.each.with_index do |player,index|
-  stats = Lol.new.get_player_data(player)
-  Player.create(:player_id => stats[player.downcase]["id"], :name => stats[player.downcase]["name"], :image => player_image[index])
+  info = Lol.new.get_player_data(player)
+  Player.create(:player_id => info[player.downcase]["id"], :name => info[player.downcase]["name"], :image => player_image[index])
 end
 
-
-
+Player.all.each do |player|
+  Character.all.each do |character|
+    PlayerCharacter.create(:player_id => player.id, :character_id => character.id)
+  end
+end

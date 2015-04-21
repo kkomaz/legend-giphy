@@ -5,6 +5,7 @@ class PlayersController < ApplicationController
 
   def show
     @player = Player.find(params[:id])
-    # @player_status = Lol.new.player_status(@player)
+    # @player_stats = Lol.new.player_stats(@player)
+    
   end
 end
