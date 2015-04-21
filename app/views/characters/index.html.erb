@@ -1,0 +1,14 @@
+<% @characters.each do |character| %>
+<div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+  <div class="flipper">
+      <div class="front">
+      <h2 style="text-align:center"><%= character.title %></h2>
+      <%= image_tag "question", height: '400px', width: '300px'%>
+      </div>
+      <div class="back">
+        <h2 style="text-align:center"><%= character.name %></h3>
+        <%= image_tag character.image, height: '400px', width: '300px' %>      
+      </div>
+  </div>
+</div>
+<% end %>

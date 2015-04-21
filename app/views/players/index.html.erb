@@ -1,0 +1,10 @@
+<center><%= image_tag "http://hydra-media.cursecdn.com/lol.gamepedia.com/e/ed/Cloud9x.png" %></center>
+
+<div class="container">
+<% @players.each do |player| %>
+<div class="col-md-6 player-list">
+  <h3><%= player.name %></h3>
+  <%= link_to image_tag(player.image), player%>
+</div>
+<% end %>
+</div>
