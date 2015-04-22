@@ -38,3 +38,5 @@ Player.all.each do |player|
                  :games_won => games_won, :games_lost => games_lost, :character_kills => character_kills, :character_assists => character_assists)
   end
 end
+
+Stat.all.where(:character_id => nil).destroy_all

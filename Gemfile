@@ -9,6 +9,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'awesome_print', '~> 1.6.1'
 gem 'figaro'
+gem 'twitter'
 
 group :development, :test do
   gem 'byebug'

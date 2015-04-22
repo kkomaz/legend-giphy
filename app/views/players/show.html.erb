@@ -1,13 +1,28 @@
 <div class="container-fluid">
   <h3 style="text-align: center">Is he playing right now on his C9 tag?</h3>
   <h3 style="text-align: center"><%= @player.get_status %></h3>
+  <br>
   <div class="col-md-6">
     <div class="row character">
-    <% @player.get_images.each do |character_img| %>
-    <div class="col-md-3" style="text-align:center">
-      <%= image_tag character_img %>
-    </div>
-    <% end %>
+    <% @player.stats.each do |stat| %>
+      <div class="col-md-3" style="text-align:center">
+        <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+          <div class="flipper">
+              <div class="front">
+                <h3><%= stat.get_character.name %></h3>
+                <%= image_tag stat.get_character.image %>
+              </div>
+              <div class="back">
+                <p>Games won:<%= stat.games_won %></p>
+                <p>Games lost:<%= stat.games_lost %></p>
+                <p>Character kills:<%= stat.character_kills %></p>
+                <p>Character assists:<%= stat.character_assists %></p>
+              </div>
+          </div>
+        </div>
+      </div>
+      <% end %>
     </div>
   </div>
 </div>
+
