@@ -14,19 +14,19 @@ class Lol
   end
 
   def player_status(player)
-    status = "#{PLAYER_STATUS}#{player.player_id}?api_key=#{ENV["API_KEY"]}"
+    status = "#{PLAYER_STATUS}#{player.player_key}?api_key=#{ENV["API_KEY"]}"
     begin
       status_hash = JSON.load(open(status))
-      true
+      "Yep! He's playing!"
     rescue OpenURI::HTTPError => e
       if e.message == '404 Not Found'
-      "nope not playing"
+      "Nope not playing"
       end
     end
   end
 
   def player_stats(player)
-    stats = "#{PLAYER_STATS}#{player.player_id}/ranked?season=SEASON2015&api_key=#{ENV["API_KEY"]}"
+    stats = "#{PLAYER_STATS}#{player.player_key}/ranked?season=SEASON2015&api_key=#{ENV["API_KEY"]}"
     stats_hash = JSON.load(open(stats))
   end
 end

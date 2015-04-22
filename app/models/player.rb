@@ -1,17 +1,15 @@
 class Player < ActiveRecord::Base
-  has_many :player_characters
-  has_many :characters, :through => :player_characters
+  has_many :stats
+  has_many :characters, :through => :stats
 
-  def player_stats
+  def player_stats(player)
     Lol.new.player_stats(self)["champions"].collect do |attributes|
       attributes["id"]
-      # attributes["stats"]["totalSessionLost"]
-      # attributes["stats"]["totalSessionsWon"]
     end
   end
 
-  def get_images
-    self.characters.where(:key => player_stats).pluck("image")
+  def get_characters_object(player)
+
   end
 
   def get_status
@@ -20,3 +18,6 @@ class Player < ActiveRecord::Base
 
 end
 
+
+# attributes["stats"]["totalSessionLost"]
+# attributes["stats"]["totalSessionsWon"]

@@ -1,9 +1,13 @@
-<div class="container">
+<div class="container-fluid">
   <h3 style="text-align: center">Is he playing right now on his C9 tag?</h3>
   <h3 style="text-align: center"><%= @player.get_status %></h3>
-  <% @player.get_images.each do |character_img| %> <br>
-  <div class="col-md-6" style="text-align:center">
-    <%= image_tag character_img %>
+  <div class="col-md-6">
+    <div class="row character">
+    <% @player.get_images.each do |character_img| %>
+    <div class="col-md-3" style="text-align:center">
+      <%= image_tag character_img %>
+    </div>
+    <% end %>
+    </div>
   </div>
-  <% end %>
 </div>

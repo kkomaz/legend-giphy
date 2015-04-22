@@ -23,11 +23,18 @@ player_image = ["http://hydra-media.cursecdn.com/lol.gamepedia.com/3/3d/HAI.C9_l
 
 players.each.with_index do |player,index|
   info = Lol.new.get_player_data(player)
-  Player.create(:player_id => info[player.downcase]["id"], :name => info[player.downcase]["name"], :image => player_image[index])
+  Player.create(:player_key => info[player.downcase]["id"], :name => info[player.downcase]["name"], :image => player_image[index])
 end
 
 Player.all.each do |player|
-  Character.all.each do |character|
-    PlayerCharacter.create(:player_id => player.id, :character_id => character.id)
+  data_stats = Lol.new.player_stats(player)
+  data_stats["champions"].each do |character_info|
+    riot_p_id = character_info["id"]
+    games_won = character_info["stats"]["totalSessionsWon"]
+    games_lost = character_info["stats"]["totalSessionsLost"]
+    character_kills = character_info["stats"]["totalChampionKills"]
+    character_assists = character_info["stats"]["totalAssists"]
+    Stat.create(:player_id => player.id, :character_id => Character.where(:key => riot_p_id).pluck(:id).join(""),
+                 :games_won => games_won, :games_lost => games_lost, :character_kills => character_kills, :character_assists => character_assists)
   end
 end
