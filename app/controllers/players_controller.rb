@@ -5,5 +5,7 @@ class PlayersController < ApplicationController
 
   def show
     @player = Player.find(params[:id])
+    # @client = TwitterApi.new
+    # @player_twitter = @client.get_twitter_feed(@player.twitter_name).take(3)
   end
 end
