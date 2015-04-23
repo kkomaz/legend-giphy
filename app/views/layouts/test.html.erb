@@ -1,0 +1,32 @@
+<div class="col-md-6">
+<div class="container">
+  <div id="wrapper">
+    <div id="content">
+      <div id="slider">
+          <% @player.stats.each.with_index do |stat, index| %>
+            <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+              <div class="flipper">
+                <div class="front image-<%= index+1%>">
+                  <h3><%= stat.get_character.name %></h3>
+                  <%= image_tag stat.get_character.image %>
+                </div>
+                <div class="back image-<%= index+1%>">
+                  <p>Games won:<%= stat.games_won %></p>
+                  <p>Games lost:<%= stat.games_lost %></p>
+                  <p>Character kills:<%= stat.character_kills %></p>
+                  <p>Character assists:<%= stat.character_assists %></p>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <div class="nav previous"></div>
+        <div class="nav next"></div>
+      </div>
+      <div id="dots">
+        <ul></ul>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+</div>

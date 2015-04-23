@@ -1,0 +1,18 @@
+<% @player_stats.each do |stat| %>
+  <div class="col-md-3" style="text-align:center">
+    <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+      <div class="flipper">
+          <div class="front">
+            <h3><%= stat.get_character.name %></h3>
+            <%= image_tag stat.get_character.image %>
+          </div>
+          <div class="back">
+            <p>Games won:<%= stat.games_won %></p>
+            <p>Games lost:<%= stat.games_lost %></p>
+            <p>Character kills:<%= stat.character_kills %></p>
+            <p>Character assists:<%= stat.character_assists %></p>
+          </div>
+      </div>
+    </div>
+  </div>
+<% end %>
