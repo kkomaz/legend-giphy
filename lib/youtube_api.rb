@@ -17,7 +17,7 @@ class YoutubeApi
 
   def get_embedded_vid(vids)
     vids.shift
-    vids.sample.embed_html5(:id => "ytplayer", :width => 640, :height => 390)
+    vids.sample.embed_html5(:id => "ytplayer", :width => 450, :height => 390)
   end
 end
 

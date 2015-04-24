@@ -1,8 +1,8 @@
 <% @player_stats.each do |stat| %>
-  <div class="col-md-3" style="text-align:center">
+  <div class="col-md-3 col-xs-12" style="text-align:center">
     <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
       <div class="flipper">
-          <div class="front">
+          <div class="front character-list">
             <h3><%= stat.get_character.name %></h3>
             <%= image_tag stat.get_character.image %>
           </div>

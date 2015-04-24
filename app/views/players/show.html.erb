@@ -1,30 +1,56 @@
-<div class="container-fluid">
-  <div class="row">
-    <h3 style="text-align: center">Is he playing right now on his C9 tag?</h3>
-    <h3 style="text-align: center"><%#= @player.get_status %></h3>
-    <div class="center-container">
-      <div id="search-results">
-        <%#= @player.pull_videos.html_safe %>    
+<div class="container">
+  <div class="row top-pad">
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="center"><%= @player.name %></h3>
+        </div>
+        <div class="panel-body profile">
+          <center><%= image_tag @player.image %></center>
+          <h3 class="center">Is he playing right now on his C9 tag?</h3>
+          <h3 class="center"><%= @player.get_status %></h3>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="center"><%= "#{@player.name}'s Youtube!" %></h3>
+        </div>
+        <div class="panel-body">
+          <div id="search-results">
+            <center><%= @player.pull_videos.html_safe %></center>
+          </div> 
+        </div>
+      </div>
+    </div>
+    <div class="col-md-5 col-md-offset-1">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="center"><%= "#{@player.name}'s Twitter Feed" %></h3>
+        </div>
+        <div class="panel-body">
+          <% @player_twitter.each do |tweet| %>
+            <center><%#= tweet.html_safe %></center>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="center"><%= "#{@player.name}'s Stats!" %></h3>
+        </div>
+        <div class="panel-body">
+          <div class="col-md-12 col-xs-12 stats character-stats">
+            <%= render "players/player_stats" %>
+          </div>
+          <div class="col-md-12">
+            <div id="paginator" style="text-align:center;">
+              <%= paginate @player_stats, remote: true %>
+            </div>              
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  
-  <div class="col-md-7">
-    <div class="row character">
-      <%= render "players/player_stats" %>
-    </div>
-    <div id="paginator" style="text-align:center;">
-      <%= paginate @player_stats %>
-    </div>
-  </div>
-  <div class="col-md-3 col-md-offset-2">
-    <div class="row">
-      <p>PlaceHolder</p>
-      <%# @player_twitter.each do |tweet| %>
-        <%#= tweet.html_safe %>
-      <%# end %>
-    </div>
-  </div>
 </div>
-
-
+  

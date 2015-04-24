@@ -1,0 +1,2 @@
+$('.character-stats').html("<%= j render :partial => 'players/player_stats' %>")
+$('#paginator').html("<%= j(paginate(@player_stats, :remote => true).to_s) %>"); 
