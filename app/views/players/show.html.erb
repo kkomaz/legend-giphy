@@ -28,7 +28,7 @@
           <h3 class="center"><%= "#{@player.name}'s Twitter Feed" %></h3>
         </div>
         <div class="panel-body">
-          <% @player_twitter.each do |tweet| %>
+          <% @player.get_twitter.each do |tweet| %>
             <center><%= tweet.html_safe %></center>
           <% end %>
         </div>

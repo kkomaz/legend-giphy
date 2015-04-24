@@ -17,4 +17,8 @@ class Player < ActiveRecord::Base
     Lol.new.player_status(self)
   end
 
+  def get_twitter
+    TwitterApi.new.get_twitter_feed(self.twitter_name).take(3)
+  end
+
 end
